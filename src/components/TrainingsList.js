@@ -2,9 +2,11 @@ import React, {useState, useEffect} from 'react';
 import { AgGridReact } from 'ag-grid-react';
 import Button from '@mui/material/Button'
 import Snackbar from '@mui/material/Snackbar';
+import moment from 'moment';
 
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
+
 
 function TrainingList(){
 
@@ -12,7 +14,9 @@ function TrainingList(){
     const [open,setOpen] = useState(false);
 
     const [columnDefs] = useState([
-        { field: 'date', sortable: true, filter: true },
+        { field: 'date', sortable: true, filter: true, cellRenderer: (data) => {
+            return moment(data.date).format('MM/DD/YYYY HH:mm')
+        } },
         { field: 'duration', sortable: true, filter: true },
         { field: 'activity', sortable: true, filter: true },
         { field: 'customer.firstname', sortable: true, filter: true },
