@@ -19,7 +19,7 @@ function CustomerList(){
         { field: 'postcode', sortable: true, filter: true},
         { field: 'city', sortable: true, filter: true},
         { field: 'email', sortable: true, filter: true},
-        { field: 'phone', sortable: true, filter: true },
+        { field: 'phone', sortable: true, filter: true }, 
         { cellRenderer: params => 
         <Button 
         size='small' 

@@ -9,15 +9,14 @@ import 'ag-grid-community/styles/ag-theme-material.css';
 function TrainingList(){
 
     const [Trainings,setTrainings] = useState([]);
-    const [CustomerLink, setCustomerLink] = useState('');
-    const [Customer,setCustomer] = useState('');
     const [open,setOpen] = useState(false);
 
     const [columnDefs] = useState([
         { field: 'date', sortable: true, filter: true },
         { field: 'duration', sortable: true, filter: true },
         { field: 'activity', sortable: true, filter: true },
-        { cellRenderer: params => getCustomer(params.value[2].href)},
+        { field: 'customer.firstname', sortable: true, filter: true },
+        { field: 'customer.lastname', sortable: true, filter: true },
         { cellRenderer: params => 
         <Button 
         size='small' 
@@ -47,7 +46,7 @@ function TrainingList(){
     };
 
     const getTrainings = () => {
-        fetch('http://traineeapp.azurewebsites.net/api/trainings')
+        fetch('http://traineeapp.azurewebsites.net/gettrainings')
        .then(response => 
         { 
         if(response.ok)
@@ -55,23 +54,10 @@ function TrainingList(){
         else
             alert('Something went wrong in GET request');
         })
-       .then(data => setTrainings(data.content))
+       .then(data => setTrainings(data))
        .then(err => console.error(err))
     }
 
-    const getCustomer = (params) => {
-        setCustomerLink(params)
-        fetch(CustomerLink)
-       .then(response => 
-        { 
-        if(response.ok)
-            return response.json();
-        else
-            alert('Something went wrong in GET request');
-        })
-       .then(data => setCustomer(data.firstname+' '+data.lastname))
-       .then(err => console.error(err))
-    }
 
     
 
