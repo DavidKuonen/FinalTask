@@ -4,6 +4,7 @@ import Button from '@mui/material/Button'
 import Snackbar from '@mui/material/Snackbar';
 import moment from 'moment';
 
+
 import 'ag-grid-community/styles/ag-grid.css';
 import 'ag-grid-community/styles/ag-theme-material.css';
 
@@ -31,9 +32,9 @@ function TrainingList(){
         </Button>, width: 120}
     ])
 
-    const deleteTraining = (params) => {
+    const deleteTraining = (training) => {
         if(window.confirm('Do you want to delete this Training?')){
-        fetch(params.data.href, {method: 'DELETE'})
+        fetch('http://traineeapp.azurewebsites.net/api/trainings/'+training.data.id, {method: 'DELETE'})
         .then(response => {
             if(response.ok){
                 setOpen(true);

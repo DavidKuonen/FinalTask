@@ -3,7 +3,6 @@ import CustomerList from './components/CustomerList'
 import TrainingList from './components/TrainingsList'
 import Home from './components/Home'
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Route, Routes, BrowserRouter, Link } from 'react-router-dom';
