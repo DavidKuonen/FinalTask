@@ -13,6 +13,7 @@ function CustomerList(){
 
     const [Customers,setCustomers] = useState([]);
     const [open,setOpen] = useState(false);
+    const [gridExport, setgridExport] = useState(null);
 
     const [columnDefs] = useState([
         { field: 'firstname', sortable: true, filter: true, width: 150 },
@@ -113,6 +114,17 @@ function CustomerList(){
        .then(err => console.error(err))
     }
 
+    const onGridReady = (params) => {
+        setgridExport(params.api);
+    };
+
+    const exportToCSV = () => {
+        const params = {
+            columnKeys: ['firstname', 'lastname', 'streetaddress', 'postcode', 'city','email', 'phone']
+        };
+        gridExport.exportDataAsCsv(params);
+    };
+
     useEffect(() => {
        getCustomers();
     }, []);
@@ -128,8 +140,17 @@ function CustomerList(){
                 columnDefs={columnDefs}
                 pagination={true}
                 paginationPageSize={10}
+                onGridReady={(params) => onGridReady(params)}
             >
             </AgGridReact>
+            <Button
+                    color="primary"
+                    size="small"
+                    onClick={exportToCSV}
+                    style={{ marginTop: 10 }}
+                >
+                    Export to CSV
+                </Button>
             <Snackbar 
             open={open}
             message='Customer deleted successfully'
