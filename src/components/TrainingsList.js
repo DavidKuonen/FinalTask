@@ -71,7 +71,9 @@ function TrainingList(){
     }, []);
 
     return(
-        <>
+        
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <h1>Trainings</h1>
         <div 
         className='ag-theme-material' 
         style={{width: '90%', height: 600, margin: 'auto'}}>
@@ -90,8 +92,9 @@ function TrainingList(){
             >
             </Snackbar>
             
-        </div>        
-        </>
+        </div>  
+        </div>      
+        
     )
 }
 

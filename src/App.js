@@ -2,6 +2,7 @@ import './App.css';
 import CustomerList from './components/CustomerList'
 import TrainingList from './components/TrainingsList'
 import Calender from './components/Calender'
+import Statistics from './components/Statistics'
 import Home from './components/Home'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
@@ -23,11 +24,13 @@ function App() {
         <Link to="/CustomerList">Customers</Link>{' '}
         <Link to="/TrainingsList">Trainings</Link>{' '}
         <Link to="/Calender">Calender</Link>{' '}
+        <Link to="/Statistics">Statistics</Link>{' '}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/CustomerList" element={<CustomerList />} />
           <Route path="/TrainingsList" element={<TrainingList />} />
           <Route path="/Calender" element={<Calender />} />
+          <Route path="/Statistics" element={<Statistics />} />
         </Routes>
       </BrowserRouter>
 

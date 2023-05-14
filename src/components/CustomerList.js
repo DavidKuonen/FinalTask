@@ -130,7 +130,9 @@ function CustomerList(){
     }, []);
 
     return(
-        <>
+    
+         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <h1>Customers</h1>
         <div 
         className='ag-theme-material' 
         style={{width: '90%', height: 600, margin: 'auto'}}>
@@ -159,8 +161,9 @@ function CustomerList(){
             >
             </Snackbar>
             
-        </div>        
-        </>
+        </div>    
+        </div>    
+        
     )
 }
 
